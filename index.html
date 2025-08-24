@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESG Stocks: An Investor's Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Energetic & Playful -->
+    <!-- Application Structure Plan: The infographic uses a top-to-bottom narrative structure, guiding a novice user from the foundational "what" to the actionable "how." It starts with a simple definition (Hero), breaks down the core components (The Three Pillars), explains the motivation (Why Invest), visualizes the methods (Investment Strategies Flowchart), highlights the primary challenge with data (Ratings Discrepancy Chart), addresses the solution (Regulatory Action), and concludes with a practical checklist. This linear, story-driven flow is designed for maximum clarity and retention of complex information in a single scroll. -->
+    <!-- Visualization & Content Choices: 1. ESG Pillars: Report info on E, S, G definitions -> Goal: Inform -> Chosen Visualization: Three styled HTML cards with Unicode icons -> Justification: Visually separates the three core concepts for easy digestion -> Method: HTML/CSS (NO SVG). 2. Investment Strategies: Report info on 5 strategies -> Goal: Organize -> Chosen Visualization: A custom flowchart diagram -> Justification: Shows the different paths funds can take in a more intuitive way than a list -> Method: HTML/CSS (NO SVG, NO Mermaid JS). 3. Ratings Discrepancy: Report data on Tesla's varied ratings -> Goal: Compare -> Chosen Visualization: Horizontal Bar Chart -> Justification: Provides a stark, immediate visual comparison of the conflicting data points, making the problem clear -> Library: Chart.js/Canvas (NO SVG). -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #073B4C;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <main class="container mx-auto px-4 py-12">
+
+        <section class="text-center mb-20">
+            <h1 class="text-4xl md:text-6xl font-bold text-[#073B4C] mb-4">A Visual Guide to ESG Stocks</h1>
+            <p class="max-w-3xl mx-auto text-lg text-gray-700">
+                ESG is a powerful framework that looks beyond profits to measure a company's long-term health, focusing on its impact on the **E**nvironment, **S**ociety, and its internal **G**overnance. This infographic breaks down what every new investor in the U.S. needs to know.
+            </p>
+        </section>
+
+        <section class="mb-20">
+            <h2 class="text-3xl font-bold text-center mb-12 text-[#118AB2]">The Three Pillars of ESG</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+                    <div class="text-6xl mb-4">🌿</div>
+                    <h3 class="text-2xl font-bold text-[#06D6A0] mb-3">Environmental</h3>
+                    <p class="text-gray-600">Evaluates a company's impact on the planet. This includes its carbon footprint, pollution, energy efficiency, and use of renewable resources.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+                    <div class="text-6xl mb-4">🤝</div>
+                    <h3 class="text-2xl font-bold text-[#FFD166] mb-3">Social</h3>
+                    <p class="text-gray-600">Examines how a company treats people. This covers labor practices, diversity, data privacy, and its relationship with the community.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+                    <div class="text-6xl mb-4">🏛️</div>
+                    <h3 class="text-2xl font-bold text-[#FF6B6B] mb-3">Governance</h3>
+                    <p class="text-gray-600">Assesses how a company is led. This looks at executive pay, shareholder rights, transparency, and anti-corruption policies.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-20 bg-white p-8 md:p-12 rounded-lg shadow-xl">
+            <h2 class="text-3xl font-bold text-center mb-10 text-[#118AB2]">Why Investors Choose ESG</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">The rise of ESG investing is driven by two powerful motivations that go hand-in-hand: achieving strong financial returns and making a positive impact on the world.</p>
+            <div class="grid md:grid-cols-2 gap-10 text-center">
+                <div>
+                    <div class="text-6xl mb-4">📈</div>
+                    <h3 class="text-2xl font-semibold mb-3">Better Performance & Lower Risk</h3>
+                    <p class="text-gray-700">Companies with strong ESG practices are often better managed and more resilient. This can lead to more stable earnings and a lower risk of scandals or regulatory fines that can cause a stock's price to drop suddenly.</p>
+                </div>
+                <div>
+                    <div class="text-6xl mb-4">❤️</div>
+                    <h3 class="text-2xl font-semibold mb-3">Investing with Your Values</h3>
+                    <p class="text-gray-700">For many, ESG is a way to align their financial portfolio with their personal beliefs. It allows investors to support companies that are tackling climate change, promoting social equity, and operating ethically.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-20">
+            <h2 class="text-3xl font-bold text-center mb-12 text-[#118AB2]">How ESG Funds Build Portfolios</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">ESG funds don't all work the same way. They use different strategies to select their investments. Understanding these approaches is key to finding a fund that matches your personal goals.</p>
+            <div class="space-y-8">
+                <div class="flex flex-col md:flex-row items-center justify-center p-6 bg-white rounded-lg shadow-lg">
+                    <div class="w-full md:w-1/3 text-center md:text-left mb-4 md:mb-0">
+                        <h4 class="text-xl font-bold text-[#FF6B6B]">1. Negative Screening</h4>
+                        <p class="text-sm text-gray-600">The classic approach: simply excluding entire industries like tobacco, weapons, or fossil fuels.</p>
+                    </div>
+                    <div class="hidden md:block text-2xl mx-8 text-gray-300">➡️</div>
+                    <div class="block md:hidden text-2xl my-4 text-gray-300">⬇️</div>
+                    <div class="w-full md:w-2/3 p-4 bg-red-50 rounded-md border-l-4 border-red-400">
+                        <p class="font-semibold">Example:</p>
+                        <p class="text-gray-700">A fund that refuses to invest in any company earning revenue from coal.</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row items-center justify-center p-6 bg-white rounded-lg shadow-lg">
+                    <div class="w-full md:w-1/3 text-center md:text-left mb-4 md:mb-0">
+                        <h4 class="text-xl font-bold text-[#FFD166]">2. Positive Screening</h4>
+                        <p class="text-sm text-gray-600">Instead of excluding, this strategy actively selects the "best-in-class" ESG performers from each industry.</p>
+                    </div>
+                    <div class="hidden md:block text-2xl mx-8 text-gray-300">➡️</div>
+                    <div class="block md:hidden text-2xl my-4 text-gray-300">⬇️</div>
+                    <div class="w-full md:w-2/3 p-4 bg-yellow-50 rounded-md border-l-4 border-yellow-400">
+                        <p class="font-semibold">Example:</p>
+                        <p class="text-gray-700">Investing in the car manufacturer with the top emissions and labor standards.</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row items-center justify-center p-6 bg-white rounded-lg shadow-lg">
+                    <div class="w-full md:w-1/3 text-center md:text-left mb-4 md:mb-0">
+                        <h4 class="text-xl font-bold text-[#06D6A0]">3. Thematic Investing</h4>
+                        <p class="text-sm text-gray-600">Focuses on a specific positive trend, like renewable energy, water conservation, or gender equality.</p>
+                    </div>
+                    <div class="hidden md:block text-2xl mx-8 text-gray-300">➡️</div>
+                    <div class="block md:hidden text-2xl my-4 text-gray-300">⬇️</div>
+                    <div class="w-full md:w-2/3 p-4 bg-green-50 rounded-md border-l-4 border-green-400">
+                        <p class="font-semibold">Example:</p>
+                        <p class="text-gray-700">A "Clean Energy Fund" holding only solar, wind, and EV battery companies.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-20">
+            <h2 class="text-3xl font-bold text-center mb-4 text-[#118AB2]">The Challenge: A Ratings Maze</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">A major hurdle for investors is the lack of a universal standard for ESG ratings. Different agencies use different methods, leading to wildly different scores for the same company. This can make it difficult to know who to trust.</p>
+            <div class="bg-white p-8 rounded-lg shadow-xl">
+                <h3 class="text-xl font-semibold text-center mb-2">Case Study: Tesla's Conflicting Scores</h3>
+                <p class="text-center text-gray-600 mb-8">The chart below shows how three major rating agencies scored Tesla, a company often seen as environmentally friendly. The huge variation highlights the problem of non-standardized ratings.</p>
+                <div class="chart-container">
+                    <canvas id="ratingsChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-20">
+            <h2 class="text-3xl font-bold text-center mb-12 text-[#118AB2]">The U.S. Regulatory Response</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">To combat confusion and misleading claims ("greenwashing"), the U.S. Securities and Exchange Commission (SEC) is stepping in with new rules to create a more transparent market for everyone.</p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <div class="text-5xl mb-4">📝</div>
+                    <h3 class="text-2xl font-semibold mb-3">The Corporate Disclosure Rule</h3>
+                    <p class="text-gray-700">This rule requires public companies to report standardized, climate-related financial risks and greenhouse gas emissions in their annual reports, providing investors with consistent and reliable data.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <div class="text-5xl mb-4">🏷️</div>
+                    <h3 class="text-2xl font-semibold mb-3">The "Names Rule"</h3>
+                    <p class="text-gray-700">This rule mandates that if a fund's name includes terms like "ESG" or "Green," at least 80% of its investments must actually align with that theme, preventing deceptive marketing.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-[#073B4C] text-white p-8 md:p-12 rounded-lg">
+            <h2 class="text-3xl font-bold text-center mb-10">Your ESG Investing Checklist</h2>
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="flex items-start">
+                    <div class="text-3xl mr-4 mt-1">🎯</div>
+                    <div>
+                        <h4 class="font-bold text-lg">Define Your Goals</h4>
+                        <p class="text-gray-300 text-sm">Decide what matters most to you. Is it climate action? Social justice? Knowing your priorities is the first step.</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <div class="text-3xl mr-4 mt-1">🔍</div>
+                    <div>
+                        <h4 class="font-bold text-lg">Look Beyond the Name</h4>
+                        <p class="text-gray-300 text-sm">Read a fund's prospectus to understand its specific strategy. Does it exclude industries or actively engage with them?</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <div class="text-3xl mr-4 mt-1">📊</div>
+                    <div>
+                        <h4 class="font-bold text-lg">Demand Transparency</h4>
+                        <p class="text-gray-300 text-sm">Look for funds and companies that back up their claims with clear, measurable data, not just vague "eco-friendly" statements.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center py-8 text-gray-500">
+        <p>Infographic based on the report "Understanding ESG" for educational purposes.</p>
+    </footer>
+
+    <script>
+        const ctx = document.getElementById('ratingsChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['MSCI', 'Sustainalytics', 'FTSE Russell'],
+                datasets: [{
+                    label: 'Illustrative ESG Score',
+                    data: [90, 55, 20],
+                    backgroundColor: [
+                        '#06D6A0',
+                        '#FFD166',
+                        '#FF6B6B'
+                    ],
+                    borderColor: '#073B4C',
+                    borderWidth: 2,
+                    borderRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 100,
+                        grid: {
+                            color: '#e2e8f0'
+                        },
+                        ticks: {
+                            color: '#073B4C'
+                        }
+                    },
+                    y: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#073B4C',
+                            font: {
+                                weight: 'bold'
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Illustrative ESG Ratings for Tesla (Higher is Better)',
+                        font: {
+                            size: 16
+                        },
+                        color: '#073B4C',
+                        padding: {
+                            bottom: 20
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                  return label.join(' ');
+                                } else {
+                                  return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
